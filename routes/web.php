@@ -35,4 +35,12 @@ Route::group(['prefix' => '/member'], function () {
     Route::get('/{requestId}/decline', 'MemberController@decline')->name('declineFreq');
 });
 
+Route::group(['prefix' => '/group'], function () {
+	Route::get('/', 'GroupController@list')->name('groups');
+
+	Route::get('/{id}/join', 'GroupController@join')->name('joinGroup');
+	Route::get('/{id}/left', 'GroupController@left')->name('leftGroup');
+	Route::get('/create', 'GroupController@create')->name('createGroup');
+});
+
 Route::get('/test', 'HomeController@test');

@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{ URL::route('home') }}">Home</a></li>
         <li><a href="{{ URL::route('member') }}">Members</a></li>
-        <li><a href="">Groups</a></li>
+        <li><a href="{{ URL::route('groups') }}">Groups</a></li>
         <li><a href="">Photos</a></li>
         <li><a href="{{ URL::route('profile') }}">Profile</a></li>
       </ul>

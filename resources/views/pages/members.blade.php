@@ -27,25 +27,49 @@
 
                   @if (in_array($user->id, $friendsId))
                     <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i> Friend</a>
-                  @elseif (in_array($user->id, $friendRequestsId))
-                    <a href="{{ URL::route('acceptFreq', $user->id) }}" class="btn btn-default btn-block"><i class="fa fa-users"></i> Accept</a>
-                  @elseif (in_array($user->id, $friendRequestSentsId))
-                    <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i> Friend Request Sent</a>
-                  @elseif ($user->id == $session_user->id)
-                    <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i></a>
-                  @else 
-                    <a href="{{ URL::route('addfr', $user->id) }}" class="btn btn-success btn-block"><i class="fa fa-users"></i> Add Friend</a>
-                  @endif
-                  
-                  </p>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                  <p><a href="#" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Unfriend</a></p>
                 </div>
 
+                  @elseif (in_array($user->id, $friendRequestsId))
+                    <a href="{{ URL::route('acceptFreq', $user->id) }}" class="btn btn-default btn-block"><i class="fa fa-users"></i> Accept</a>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                  <p><a href="{{ URL::route('declineFreq', $user->id ) }}" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Decline</a></p>
+                </div>
+
+                  @elseif (in_array($user->id, $friendRequestSentsId))
+                    <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i> Friend Request Sent</a>
+                    </p>
+                </div>
                 <div class="col-md-3">
                   <p><a href="#" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Send Message</a></p>
                 </div>
 
+                  @elseif ($user->id == $session_user->id)
+                    <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i></a>
+                    </p>
+                </div>
                 <div class="col-md-3">
-                  <p><a href="#" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> View Profile</a></p>
+                  <p><a href="#" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> </a></p>
+                </div>
+
+                  @else 
+                    <a href="{{ URL::route('addfr', $user->id) }}" class="btn btn-success btn-block"><i class="fa fa-users"></i> Add Friend</a>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                  <p><a href="#" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Send Message</a></p>
+                </div>
+
+                  @endif
+                  
+
+                <div class="col-md-3">
+                  <p><a href="{{ URL::route('profile', $user->id) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> View Profile</a></p>
                 </div>
 
               </div>
