@@ -22,35 +22,37 @@ class ProfileController extends Controller
     }
 
     // show user profile
-    public function showMyProfile() 
-    {
-        $profile = Profile::find(Auth::id());
+    // public function showMyProfile() 
+    // {
+    //     $user = Auth::user();
+    //     $profile = Profile::find(Auth::id());
 
-        $data = array (
-            'profile' => $profile
-        );
+    //     $data = array (
+    //         'user'    => $user,
+    //         'profile' => $profile
+    //     );
 
-        return view('pages.profile')->with($data);
-    }
+    //     return view('pages.profile')->with($data);
+    // }
     
     // show other profile
     // input: $id
-    public function showProfile() 
+    public function showProfile($id = null) 
     {
-        $id = Input::get('id', '');
+        
+        $user = Auth::user();
         
         if ($id != null) 
         {
-            $user = User::find($id);
-            $profile = Profile::find($user->profile_id);
+            $profile = Profile::find($id);
         }
         else 
         {
-            $user = Auth::user();
             $profile = Profile::find($user->profile_id);
         }
 
         $data = array (
+            'user'    => $user,
             'profile' => $profile
         );
 
@@ -59,7 +61,7 @@ class ProfileController extends Controller
 
     public function editProfile() 
     {
-        $user = Auth::user();
+        $user    = Auth::user();
         $profile = Profile::find($user->profile_id);
 
         $data = array (

@@ -23,11 +23,11 @@ class GroupController extends Controller
     public function list() 
     {
         // get list of all group and current user
-        $groups = Group::all();
+        $groups     = Group::all();
         $this->user = Auth::user();
 
         // get list id of group joined
-        $relations = UserGroup::where('user_id' , '=', $this->user->id)->get();
+        $relations     = UserGroup::where('user_id' , '=', $this->user->id)->get();
         $groupJoinedId = array ();
         foreach ($relations as $relation) {
             $groupJoinedId []= $relation->group_id;
@@ -35,7 +35,8 @@ class GroupController extends Controller
 
         // data to pass to view
         $data = array (
-            'list_group' => $groups,
+            'user'          => $this->user,
+            'list_group'    => $groups,
             'groupJoinedId' => $groupJoinedId,
         );
 
@@ -52,8 +53,8 @@ class GroupController extends Controller
             return $this->list();
 
         // create new relation
-        $relation = new UserGroup();
-        $relation->user_id = $this->user->id;
+        $relation           = new UserGroup();
+        $relation->user_id  = $this->user->id;
         $relation->group_id = $groupId;
         $relation->save();
 
@@ -92,11 +93,11 @@ class GroupController extends Controller
     public function create(CreateGroupRequest $request) 
     {
         $this->user = Auth::user();
-
-        $group = new Group();
-        $group->name = $request->name;
+        
+        $group              = new Group();
+        $group->name        = $request->name;
         $group->description = $request->description;
-        $group->user_id = $this->user->id;
+        $group->user_id     = $this->user->id;
         $group->save();
 
         $this->join($group->id);

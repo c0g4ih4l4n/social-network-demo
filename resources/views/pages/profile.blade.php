@@ -6,7 +6,11 @@
         <div class="row">
           <div class="col-md-8">
             <div class="profile">
-              <h1 class="page-header">{{ $profile->name }}<a class="btn btn-primary" href="{{ URL::route('editProfile') }}">Update Profile</a></h1>
+              <h1 class="page-header">{{ $profile->name }}
+              @if ($user->profile_id == $profile->id)
+              <a class="btn btn-primary" href="{{ URL::route('editProfile') }}">Update Profile</a>
+              @endif
+              </h1>
               <div class="row">
                 <div class="col-md-4">
                   <img src="{{ URL::asset('img/user.png') }}" class="img-thumbnail" alt="">

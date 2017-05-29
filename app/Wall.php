@@ -13,4 +13,9 @@ class Wall extends Model
     ];
 
     protected $timestamp = true;
+
+    public function user ()
+    {
+    	return $this->hasOne('App\User');
+    }
 }

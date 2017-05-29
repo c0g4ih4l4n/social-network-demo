@@ -4,6 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\PostCreateRequest;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
+// model
+use App\User;
+use App\Profile;
+use App\UserFriend;
+use App\FriendRequest;
+use App\Wall;
+use App\Post;
+
 class PostController extends Controller
 {
     /**
@@ -32,9 +45,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostCreateRequest $request)
     {
-        //
+
+        $wall = Wall::find($request->wall_id);
+        if ($wall == null)
+            return redirect()->route('home');
+
+        $post = new Post();
+        $post->content = $request->content;
+        $post->user_id = Auth::id();
+        $post->wall_id = $request->wall_id;
+        $post->save();
+
+        return redirect()->route('showWall', $request->wall_id);
     }
 
     /**

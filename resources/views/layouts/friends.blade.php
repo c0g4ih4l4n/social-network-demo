@@ -8,7 +8,7 @@
     <ul>
     @if (isset($friends))
     @foreach ($friends as $friend)
-      <li><a href="{{ URl::route('profile', $friend->id) }}" class="thumbnail"><img src="{{ URL::asset('img/user.png') }}" alt=""></a></li>
+      <li><a href="{{ URl::route('showWall', $friend->wall_id) }}" class="thumbnail"><img src="{{ URL::asset('img/user.png') }}" alt=""></a></li>
     @endforeach
     @endif
     </ul>

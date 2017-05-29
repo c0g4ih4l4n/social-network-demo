@@ -3,9 +3,15 @@
     <h3 class="panel-title">Wall</h3>
   </div>
   <div class="panel-body">
-    <form>
+    <form method="post" action="{{ URL::route('post.store') }}">
+      {{ csrf_field() }}
+      @if (isset($wall))
+      <input hidden="hidden" type="text" name="wall_id" value="{{ $wall->id }}">
+      @else
+      <input hidden="hidden" type="text" name="wall_id" value="{{ $user->wall_id }}">
+      @endif
       <div class="form-group">
-        <textarea class="form-control" placeholder="Write on the wall"></textarea>
+        <textarea class="form-control" placeholder="Write on the wall" name="content"></textarea>
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
       <div class="pull-right">

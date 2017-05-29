@@ -14,7 +14,7 @@
         <li class="active"><a href="{{ URL::route('home') }}">Home</a></li>
         <li><a href="{{ URL::route('member') }}">Members</a></li>
         <li><a href="{{ URL::route('groups') }}">Groups</a></li>
-        <li><a href="{{ URL::route('showWall', 2) }}">Wall</a></li>
+        <li><a href="{{ URL::route('showWall', $user->wall_id) }}">Wall</a></li>
         <li><a href="{{ URL::route('profile') }}">Profile</a></li>
       </ul>
     </div><!--/.nav-collapse -->

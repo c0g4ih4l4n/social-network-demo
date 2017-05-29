@@ -6,15 +6,18 @@
 
   <div class="panel-body">
 
+  @if (isset($groups))
+  @foreach ($groups as $group)
     <div class="group-item">
       <img src="{{ URL::asset('img/group.png') }}" alt="">
-      <h4><a href="#" class="">Sample Group One</a></h4>
-      <p>This is a paragraph of intro text, or whatever I want to call it.</p>
+      <h4><a href="#" class="">{{ $group->name }}</a></h4>
+      <p>{{ $group->description }}</p>
     </div>
 
     <div class="clearfix"></div>
+  @endforeach
+  @endif
 
     <a href="#" class="btn btn-primary">View All Groups</a>
-    
   </div>
 </div>

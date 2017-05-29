@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-8">
 
-        @include ('layouts.post')
+        @include ('layouts.postForm')
         <div class="panel panel-default post">
           <div class="panel-body">
              <div class="row">

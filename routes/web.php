@@ -47,8 +47,12 @@ Route::group(['prefix' => '/group'], function () {
 });
 
 Route::group(['prefix' => '/wall'], function () {
-    Route::get('{id}', 'WallController@showWall')->name('showWall');
+    Route::get('{wall_id}', 'WallController@showWall')->name('showWall');
 
 });
+
+Route::resource('comment', 'CommentController');
+
+Route::resource('post', 'PostController');
 
 Route::get('/test', 'HomeController@test');

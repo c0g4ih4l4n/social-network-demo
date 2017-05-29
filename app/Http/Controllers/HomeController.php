@@ -4,6 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
+// model
+use App\User;
+use App\Profile;
+use App\UserFriend;
+use App\FriendRequest;
+use App\Wall;
+use App\Post;
+
 class HomeController extends Controller
 {
     /**
@@ -23,7 +34,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $user = Auth::user();
+
+        $data = array (
+            'groups' => $user->groups,
+            'user' => $user
+            );
+        
+        return view('pages.home')->with($data);
     }
 
     /**

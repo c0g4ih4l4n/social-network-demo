@@ -13,4 +13,19 @@ class Post extends Model
     ];
 
     protected $timestamp = true;
+
+    public function user()
+    {
+    	return $this->belongsTo('App\User');
+    }
+
+    public function comment ()
+    {
+    	return $this->hasMany('App\Comment');
+    }
+
+    public function wall ()
+    {
+        return $this->belongsTo('App\Wall');
+    }
 }

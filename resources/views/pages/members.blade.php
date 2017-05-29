@@ -18,7 +18,7 @@
                 <div class="col-md-3">
                   <img src="img/user.png" class="img-thumbnail" alt="">
                   <div class="text-center">
-                    {{ $user->name }}
+                    <a href="{{ URL::route('showWall', $user->wall_id) }}">{{ $user->name }}</a>
                   </div>
                 </div>
 
@@ -69,7 +69,7 @@
                   
 
                 <div class="col-md-3">
-                  <p><a href="{{ URL::route('profile', $user->id) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> View Profile</a></p>
+                  <p><a href="{{ URL::route('profile', $user->profile_id) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> View Profile</a></p>
                 </div>
 
               </div>
