@@ -7,7 +7,7 @@
   <div class="panel-body">
 
     <div class="group-item">
-      <img src="img/group.png" alt="">
+      <img src="{{ URL::asset('img/group.png') }}" alt="">
       <h4><a href="#" class="">Sample Group One</a></h4>
       <p>This is a paragraph of intro text, or whatever I want to call it.</p>
     </div>

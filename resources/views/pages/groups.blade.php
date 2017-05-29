@@ -15,11 +15,18 @@
 
           @foreach ($list_group as $group)
           <div class="group-item">
-            <img src="img/group.png" alt="">
+            <img src="{{ URL::asset('img/group.png') }}" alt="">
             <h4><a href="#">{{ $group->name }}</a></h4>
             <p>{{ $group->description }}</p>
+
+            {{-- check group join or not --}}
             <p>
-              <a href="#" class="btn btn-default">Join Group</a>
+            @if (in_array($group->id, $groupJoinedId))
+              <a href="#" class="btn btn-default">Joined</a>
+              <a href="{{ URL::route('leaveGroup', $group->id) }}" class="btn btn-default">Leave Group</a>
+            @else
+              <a href="{{ URL::route('joinGroup', $group->id) }}" class="btn btn-default">Join Group</a>
+            @endif
             </p>
           </div>
 

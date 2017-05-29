@@ -6,7 +6,11 @@
 
   <div class="panel-body">
     <ul>
-      <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
+    @if (isset($friends))
+    @foreach ($friends as $friend)
+      <li><a href="{{ URl::route('profile', $friend->id) }}" class="thumbnail"><img src="{{ URL::asset('img/user.png') }}" alt=""></a></li>
+    @endforeach
+    @endif
     </ul>
 
     <div class="clearfix"></div>

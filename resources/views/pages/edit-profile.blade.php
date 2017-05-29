@@ -6,20 +6,26 @@
         <div class="row">
           <div class="col-md-8">
             <div class="profile">
-              <h1 class="page-header">{{ $profile->name }}<a class="btn btn-primary" href="{{ URL::route('editProfile') }}">Update Profile</a></h1>
+              <h1 class="page-header">{{ $profile->name }}</h1>
               <div class="row">
                 <div class="col-md-4">
                   <img src="{{ URL::asset('img/user.png') }}" class="img-thumbnail" alt="">
                 </div>
                 <div class="col-md-8">
+                <form method="post" action="{{ URL::route('updateProfile') }}">
+                {{ csrf_field () }}
                   <ul>
-                    <li><strong>Name:</strong>{{ $profile->name }}</li>
-                    <li><strong>Email:</strong>{{ $profile->email }}</li>
-                    <li><strong>City:</strong>{{ $profile->city }}</li>
-                    <li><strong>Country:</strong>{{ $profile->country }}</li>
-                    <li><strong>Gender:</strong>{{ $profile->sex }}</li>
-                    <li><strong>DOB:</strong>{{ $profile->birthday }}</li>
+                    <li><strong>Name:</strong><input type="text" name="name" value="{{ $profile->name }}"></li>
+                    <li><strong>Email:</strong><input type="text" name="email" value="{{ $profile->email }}"></li>
+                    <li><strong>City:</strong><input type="text" name="city" value="{{ $profile->city }}"></li>
+                    <li><strong>Country:</strong><input type="text" name="country" value="{{ $profile->country }}"></li>
+                    <li><strong>Gender:</strong><input type="text" name="sex" value="{{ $profile->sex }}"></li>
+                    <li><strong>DOB:</strong><input type="text" name="birthday" value="{{ $profile->birthday }}"></li>
                   </ul>
+
+                  <button type="submit" class="btn btn-primary">Update Profile</button>
+                
+                </form>
                 </div>
               </div><br><br>
               <div class="row">

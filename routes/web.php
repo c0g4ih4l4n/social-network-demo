@@ -21,6 +21,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/profile/edit', 'ProfileController@editProfile')->name('editProfile');
+Route::post('/profile/update', 'ProfileController@updateProfile')->name('updateProfile');
 Route::get('/profile/{id?}', 'ProfileController@showProfile')->name('profile');
 
 Route::group(['prefix' => '/member'], function () {
@@ -39,8 +41,14 @@ Route::group(['prefix' => '/group'], function () {
 	Route::get('/', 'GroupController@list')->name('groups');
 
 	Route::get('/{id}/join', 'GroupController@join')->name('joinGroup');
-	Route::get('/{id}/left', 'GroupController@left')->name('leftGroup');
-	Route::get('/create', 'GroupController@create')->name('createGroup');
+	Route::get('/{id}/leave', 'GroupController@leave')->name('leaveGroup');
+	Route::get('/create', 'GroupController@viewCreateGroup')->name('createGroup');
+    Route::post('/create', 'GroupController@create')->name('postCreateGroup');
+});
+
+Route::group(['prefix' => '/wall'], function () {
+    Route::get('{id}', 'WallController@showWall')->name('showWall');
+
 });
 
 Route::get('/test', 'HomeController@test');

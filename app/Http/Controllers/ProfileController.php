@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
+// request
+use App\Http\Requests\UpdateProfileRequest;
+
 // model
 use App\User;
 use App\Profile;
@@ -38,11 +41,13 @@ class ProfileController extends Controller
         
         if ($id != null) 
         {
-            $profile = Profile::find($id);
+            $user = User::find($id);
+            $profile = Profile::find($user->profile_id);
         }
         else 
         {
-            $profile = Profile::find(Auth::id());
+            $user = Auth::user();
+            $profile = Profile::find($user->profile_id);
         }
 
         $data = array (
@@ -52,14 +57,30 @@ class ProfileController extends Controller
         return view('pages.profile')->with($data);
     }
 
-    public function edit($id) 
+    public function editProfile() 
     {
+        $user = Auth::user();
+        $profile = Profile::find($user->profile_id);
 
+        $data = array (
+            'profile' => $profile
+        );
+
+        return view('pages.edit-profile')->with($data);
     }
 
-    public function update($id, $request) 
+    public function updateProfile (UpdateProfileRequest $request)
     {
+        $user    = Auth::user();
+        $profile = Profile::find($user->profile_id);
+        
+        $profile->name     = $request->name;
+        $profile->email    = $request->email;
+        $profile->city     = $request->city;
+        $profile->country  = $request->country;
+        $profile->birthday = $request->birthday;
+        $profile->save();
 
-    	
+        return redirect()->route('profile');
     }
 }

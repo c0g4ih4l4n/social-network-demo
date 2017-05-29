@@ -21,7 +21,7 @@
 
   <header>
     <div class="container">
-      <img src="img/logo.png" class="logo" alt="">
+      <img src="{{ URL::asset('img/logo.png') }}" class="logo" alt="">
       <form class="form-inline">
         <div class="form-group">
           <label class="sr-only" for="exampleInputEmail3">Email address</label>
