@@ -17,10 +17,12 @@
           </div>
         </div>
 
-
       </div>
 
+      @if (isset($user))
       @include ('layouts.rightbar')
+      @endif
+
     </div>
   </div>
 </section>
