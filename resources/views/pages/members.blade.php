@@ -13,19 +13,19 @@
 
               <h1 class="page-header">Members</h1>
 
-              @foreach ($users as $user)
+              @foreach ($users as $userRecord)
               <div class="row member-row">
                 <div class="col-md-3">
                   <img src="img/user.png" class="img-thumbnail" alt="">
                   <div class="text-center">
-                    <a href="{{ URL::route('showWall', $user->wall_id) }}">{{ $user->name }}</a>
+                    <a href="{{ URL::route('showWall', $userRecord->wall_id) }}">{{ $userRecord->name }}</a>
                   </div>
                 </div>
 
                 <div class="col-md-3">
                   <p>
 
-                  @if (in_array($user->id, $friendsId))
+                  @if (in_array($userRecord->id, $friendsId))
                     <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i> Friend</a>
                     </p>
                 </div>
@@ -33,15 +33,15 @@
                   <p><a href="#" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Unfriend</a></p>
                 </div>
 
-                  @elseif (in_array($user->id, $friendRequestsId))
-                    <a href="{{ URL::route('acceptFreq', $user->id) }}" class="btn btn-default btn-block"><i class="fa fa-users"></i> Accept</a>
+                  @elseif (in_array($userRecord->id, $friendRequestsId))
+                    <a href="{{ URL::route('acceptFreq', $userRecord->id) }}" class="btn btn-default btn-block"><i class="fa fa-users"></i> Accept</a>
                     </p>
                 </div>
                 <div class="col-md-3">
-                  <p><a href="{{ URL::route('declineFreq', $user->id ) }}" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Decline</a></p>
+                  <p><a href="{{ URL::route('declineFreq', $userRecord->id ) }}" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Decline</a></p>
                 </div>
 
-                  @elseif (in_array($user->id, $friendRequestSentsId))
+                  @elseif (in_array($userRecord->id, $friendRequestSentsId))
                     <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i> Friend Request Sent</a>
                     </p>
                 </div>
@@ -49,7 +49,7 @@
                   <p><a href="#" class="btn btn-default btn-block"><i class="fa fa-envelope"></i> Send Message</a></p>
                 </div>
 
-                  @elseif ($user->id == $session_user->id)
+                  @elseif ($userRecord->id == $user->id)
                     <a href="" class="btn btn-default btn-block"><i class="fa fa-users"></i></a>
                     </p>
                 </div>
@@ -58,7 +58,7 @@
                 </div>
 
                   @else 
-                    <a href="{{ URL::route('addfr', $user->id) }}" class="btn btn-success btn-block"><i class="fa fa-users"></i> Add Friend</a>
+                    <a href="{{ URL::route('addfr', $userRecord->id) }}" class="btn btn-success btn-block"><i class="fa fa-users"></i> Add Friend</a>
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -69,7 +69,7 @@
                   
 
                 <div class="col-md-3">
-                  <p><a href="{{ URL::route('profile', $user->profile_id) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> View Profile</a></p>
+                  <p><a href="{{ URL::route('profile', $userRecord->profile_id) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> View Profile</a></p>
                 </div>
 
               </div>

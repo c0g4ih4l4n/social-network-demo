@@ -22,34 +22,34 @@ class MemberController extends Controller
 
     public function list() 
     {
-        $session_user = Auth::user();
+        $user = Auth::user();
 
         $users = User::all();
 
         // get friend list
-        $friends = UserFriend::where('user_id', '=', $session_user->id)->get();
+        $friends = UserFriend::where('user_id', '=', $user->id)->get();
         $friendsId = array();
         foreach ($friends as $friend) {
             $friendsId []= $friend->friend_id;
         }
-        $friends = UserFriend::where('friend_id', '=', $session_user->id)->get();
+        $friends = UserFriend::where('friend_id', '=', $user->id)->get();
         foreach ($friends as $friend) {
             $friendsId []= $friend->user_id;
         }
 
-        $friendRequests = FriendRequest::where('requester_id', '=', $session_user->id)->get();
+        $friendRequests = FriendRequest::where('requester_id', '=', $user->id)->get();
         $friendRequestsId = array();
         foreach ($friendRequests as $friendRequest) {
             $friendRequestsId []= $friendRequest->user_id;
         }
 
-        $friendRequestSents = FriendRequest::where('user_id', '=', $session_user->id)->get();
+        $friendRequestSents = FriendRequest::where('user_id', '=', $user->id)->get();
         $friendRequestSentsId = array();
         foreach ($friendRequestSents as $friendRequestSent) {
             $friendRequestSentsId []= $friendRequestSent->requester_id;
         }
         $data = array (
-            'session_user' => $session_user,
+            'user' => $user,
             'users' => $users,
             'friendsId' => $friendsId,
             'friendRequestsId' => $friendRequestsId,

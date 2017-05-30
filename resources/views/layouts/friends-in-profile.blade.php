@@ -6,8 +6,8 @@
 
   <div class="panel-body">
     <ul>
-    @if (isset($user))
-    @foreach ($user->friends as $friend)
+    @if (isset($profile))
+    @foreach ($profile->user->friends as $friend)
       <li><a href="{{ URL::route('showWall', $friend->wall_id) }}" class="thumbnail"><img src="{{ URL::asset('img/user.png') }}" alt="">{{ $friend->name }}</a></li>
     @endforeach
     @endif

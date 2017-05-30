@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function friends ()
     {
-        // return $this->belongsToMany('App\User', 'userfriend', 'id', );
+        return $this->belongsToMany('App\User', 'userfriend', 'user_id', 'friend_id');
     }
 
     public function groups ()

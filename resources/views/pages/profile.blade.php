@@ -54,7 +54,7 @@
           </div>
           
 
-          @include ('layouts.rightbar')
+          @include ('layouts.rightbar-profile')
         </div>
       </div>
     </section>

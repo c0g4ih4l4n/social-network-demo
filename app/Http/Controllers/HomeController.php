@@ -37,7 +37,6 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $data = array (
-            'groups' => $user->groups,
             'user' => $user
             );
         

@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
 
-      @include ('layouts.rightbar')
+      @include ('layouts.rightbar-profile')
       
 
       <div class="col-md-8">
