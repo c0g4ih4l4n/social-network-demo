@@ -39,15 +39,19 @@ class HomeController extends Controller
         $data = array (
             'user' => $user
             );
-        
-        return view('pages.home')->with($data);
+
+        return view ('pages.home')->with($data);
     }
 
+    public function showLoginForm ()
+    {
+        return view ('pages.loginPage');
+    }
     /**
      * Test View
      * @return view pages
      */
-    public function test() 
+    public function test()
     {
         return view('pages.profile');
     }

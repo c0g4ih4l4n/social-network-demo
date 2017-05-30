@@ -9,6 +9,7 @@
         <span class="icon-bar"></span>
       </button>
     </div>
+    @if (isset ($user))
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{ URL::route('home') }}">Home</a></li>
@@ -18,5 +19,6 @@
         <li><a href="{{ URL::route('profile') }}">Profile</a></li>
       </ul>
     </div><!--/.nav-collapse -->
+    @endif
   </div>
 </nav>
